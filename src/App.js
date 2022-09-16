@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import { useEffect, useState } from "react";
+import UserProfile from "./UserProfile/UserProfile";
+import { Route, Routes, Navigate, Redirect } from "react-router-dom";
+import Header from "./Header/Header";
+export default function App() {
+  useEffect(() => {
+    console.log('useEffect running!')
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="*" element={<Navigate to="/user/10" replace />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;
